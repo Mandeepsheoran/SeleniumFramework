@@ -1,0 +1,76 @@
+package org.igt.utils;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.igt.exceptions.FrameworkException;
+import org.igt.exceptions.InvalidExcelFilePathException;
+import org.igt.frameworkconstants.FrameworkConstants;
+
+/**
+ * Class having methods to extract test data from external sheet.
+ * Apr 27, 2021
+ * @author Mandeep Sheoran
+ * @version 1.0
+ * @since 1.0
+ */
+public class ExcelUtils {
+	
+	private ExcelUtils() {		
+	}	
+	/**
+	 * Method to read complete data from excel sheet using apache POI and return a list of this test data.
+	 * @param sheetname
+	 * @return
+	 */
+	public static List<Map<String,String>> getTestDetails(String sheetname){
+		
+		 List<Map<String,String>> list = null;
+		
+		try(FileInputStream fs= new FileInputStream(FrameworkConstants.getExcelpath())) {			
+			XSSFWorkbook workbook = new XSSFWorkbook(fs);		
+			XSSFSheet sheet = workbook.getSheet(sheetname);
+			int rownum = sheet.getLastRowNum();
+			int colmncount = sheet.getRow(0).getLastCellNum();
+			 Map<String,String> map = null;
+			  list = new ArrayList<>();
+			 for(int i=1;i<=rownum;i++) { 
+				 map = new HashMap<>();
+				 for(int j=0;j<colmncount;j++) {
+					 String key= sheet.getRow(0).getCell(j).getStringCellValue();
+					 String value = sheet.getRow(i).getCell(j).getStringCellValue();
+					 map.put(key,value);					 					 
+				 }
+				 list.add(map);
+			 }			 
+		} catch (FileNotFoundException  e) {
+			StackTraceElement[] exc = e.getStackTrace();
+			exc[0] = new StackTraceElement("org.igt.utils.ExcelUtils", "getTestDetails", "ExcelUtils.java", 24);
+			e.setStackTrace(exc);
+			throw new InvalidExcelFilePathException("Error while reading the excel file", e);
+		} catch (IOException e) {		
+			throw new FrameworkException("Input output exception while reading the file", e);
+	}
+		//Now no need of below block as we are trying with resources now. We have passed file opening portion in try means no need to manually close the file which will be done by try block itself.
+	/*	finally {
+			try {
+				if(Objects.nonNull(fs)) {
+				fs.close();
+				}
+			} catch (IOException e) {
+			
+				e.printStackTrace();
+			}
+		} */
+		return list;			
+	}
+
+}

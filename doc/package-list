@@ -1,0 +1,12 @@
+org.igt.customannotations
+org.igt.dataprovider
+org.igt.drivers
+org.igt.enums
+org.igt.exceptions
+org.igt.factories
+org.igt.frameworkconstants
+org.igt.listeners
+org.igt.pagefactory
+org.igt.pompages
+org.igt.reports
+org.igt.utils

@@ -1,0 +1,6 @@
+projectKey=org.igt.framework:igtframework
+serverUrl=http://localhost:9001
+serverVersion=6.7.1.35068
+dashboardUrl=http://localhost:9001/dashboard/index/org.igt.framework:igtframework
+ceTaskId=AXmZSPSce71mDx8SVlmJ
+ceTaskUrl=http://localhost:9001/api/ce/task?id=AXmZSPSce71mDx8SVlmJ
