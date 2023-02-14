@@ -16,9 +16,9 @@ import org.igt.enums.CategoryType;
  * @since 1.0
  */
 @Retention(RUNTIME)
-@Target(METHOD)   // These are values we have to select while creating annotation class
-public @interface FrameworkAnnotations {	//This creation is of annotation type and not class type
-	public String author();    //We have to use String[] if we want to pass multiple author name from test case
+@Target(METHOD)   
+public @interface FrameworkAnnotations {	
+	public String author();    
 	public CategoryType[] category();
 	public String osinfo();
 }
