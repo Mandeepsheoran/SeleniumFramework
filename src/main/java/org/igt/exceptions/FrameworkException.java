@@ -13,10 +13,10 @@ package org.igt.exceptions;
 public class FrameworkException extends RuntimeException {
 	
 	public FrameworkException(String message) {
-		super(message); // This is to pass exception to parent exception calss i.e. RuntimeException because we want to stop the execution
+		super(message); 
 	}
 	
-	public FrameworkException(String message, Throwable cause) {  // This is also constructor in case if user want to send cause message also
+	public FrameworkException(String message, Throwable cause) { 
 		super(message,cause);
 	}
 
