@@ -31,8 +31,6 @@ public class MethodInterceptor implements IMethodInterceptor {
 		
 		List<Map<String, String>> list = ExcelUtils.getTestDetails(FrameworkConstants.getTestcasesheet());
 		List<IMethodInstance> result = new ArrayList<>();
-	
-		//Here we are finding methods and their details and then comparing and setting information from "list" which has extracted data from excel sheet so we will put that data in result array so that execution can be controlled using that excel sheet.
 		for(int i=0;i<methods.size();i++) {
 			for(int j=0;j<list.size();j++) {
 				if(methods.get(i).getMethod().getMethodName().equalsIgnoreCase(list.get(j).get("testname")) &&
