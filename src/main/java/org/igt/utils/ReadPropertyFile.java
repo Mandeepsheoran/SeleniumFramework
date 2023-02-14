@@ -33,23 +33,21 @@ public final class ReadPropertyFile {
 	 * @author Mandeep Sheoran
 	 */
 	static {
-		//Trying with resources
+	
 		try(FileInputStream file= new FileInputStream(FrameworkConstants.getPropertyFilePath())) {
 			
-			property.load(file);   // Here property load will create a Hashtable which will have content of property file
-			//Hashtable---Slow but thread safe....If we have to call property file one or two times then we can use hastable
-			//But if required to call multiple time we will use Hashmap which is mentioned below
+			property.load(file);   
 			
-			for (Entry<Object, Object> entry : property.entrySet()) {   //Here we have created Hashmap which has all property content
-				PROPMAP.put(String.valueOf(entry.getKey()) , String.valueOf(entry.getValue()).trim()); // trim() will remove leading and trailing spaces
+			for (Entry<Object, Object> entry : property.entrySet()) {   
+				PROPMAP.put(String.valueOf(entry.getKey()) , String.valueOf(entry.getValue()).trim()); 
 			}
 			
-			//Above code in Java 8 way. COmmenting out as of now but will use it later
+			
 		//	property.forEach((k,v) -> PROPMAP.put(String.valueOf(k),String.valueOf(v)));
 			
 		}  catch (IOException e) {
 			e.printStackTrace();
-			System.exit(0); // Here (0) means we want to exit the process gracefully i.e. slowly slowly stop all the processes
+			System.exit(0); 
 		}
 	}
 	/**
@@ -58,20 +56,18 @@ public final class ReadPropertyFile {
 	 * @param key
 	 * @return 
 	 */
-	public static String getPropValue(ConfigPropertiesEnum key)  { //Use this method if using Hashmap in static block above
-		
-		if (Objects.isNull(key) || Objects.isNull(PROPMAP.get(key.name().toLowerCase()))) {                 //Thrown actual error which will help us in debugging
+	public static String getPropValue(ConfigPropertiesEnum key)  { 
+		if (Objects.isNull(key) || Objects.isNull(PROPMAP.get(key.name().toLowerCase()))) {                 
 			throw new PropertyFileUsageException("Property name" + "key" + "not found. Please check config.properties file");
 		}
 		return PROPMAP.get(key.name().toLowerCase());
 	}
 
-	// Not using below method which is based on hastable as of now as we are using Hashmap 
-	public static String getValue(String key) { // Use this method if using Hashtable in static block above
+	public static String getValue(String key) { 
 		String value = "";
 				
 		value= property.getProperty(key);
-		if (Objects.isNull(value)) {                 //Thrown actual error which will help us in debugging
+		if (Objects.isNull(value)) {                
 			throw new PropertyFileUsageException("Property name" + "key" + "not found. Please check config.properties file");
 		}
 		return value;
