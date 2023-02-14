@@ -36,7 +36,7 @@ public class ExtentReport {
 	public static void initReports()  {
 		if(Objects.isNull(extent)) {
 		extent = new ExtentReports();
-		ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getExtentreportfilepath()); //This will store report on project root folder
+		ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getExtentreportfilepath()); 
 		extent.attachReporter(spark);
 		spark.config().setTheme(Theme.DARK);
 		spark.config().setDocumentTitle("ExtentReport");
@@ -69,10 +69,6 @@ public class ExtentReport {
 		ExtentManager.setExtentTest(test);
 	}
 	
-	// If we have to pass multiple author/category name we can use array of string type for that like String[] author and iterate values using for loop 
-	 //   for (String temp:author){ 
-	//         ExtentManager.getExtentTest().assignAuthor(author);
-	//     }
 	/** 
 	 * Method to add author name in report which will be passed from sheet.
 	 * Apr 27, 2021
