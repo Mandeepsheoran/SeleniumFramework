@@ -10,7 +10,7 @@ package org.igt.exceptions;
  * @see FrameworkException
  */
 @SuppressWarnings("serial")
-public class InvalidExcelFilePathException extends FrameworkException {  //This class is created to implement exception specific class like we also created one for ReadProperty file exception
+public class InvalidExcelFilePathException extends FrameworkException {  
 	
 	public InvalidExcelFilePathException(String message) {
 		super(message);
