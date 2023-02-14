@@ -21,10 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class DataProviderWithJson {
 	@Test(dataProvider ="getJsonData")
 	public void testDataFromJson(Map<String,Object> map) {	
-/*	for(Map.Entry<String,Object> m : map.entrySet()) {            //This is Java 7
-		System.out.println(m.getKey()+":"+ m.getValue());
-	} */
-	map.forEach((k,v)->System.out.println(k+":"+v));       //This is Java 8
+	map.forEach((k,v)->System.out.println(k+":"+v));      
 	}
 	
 	/**
