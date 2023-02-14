@@ -32,11 +32,11 @@ public class BasePage {
 		ExplicitWaitFactory.performExplicitWait(waitmethod, by).click();
 		try {
 			ExtentLogger.pass(elementname + "is clicked",true);
-			new ExtentLoggerImpl().log("pass", (elementname + "is clicked"));  //Java 7 way
-			new ConsoleLoggerImpl().log("pass", (elementname+" is clicked")); //To print logs on console for jenkins
+			new ExtentLoggerImpl().log("pass", (elementname + "is clicked"));  
+			new ConsoleLoggerImpl().log("pass", (elementname+" is clicked")); 
 			
-			FrameworkLogger.log(LogType.INFO, (elementname+ " is clicked")); // Java 8 implementation
-		//	FrameworkLogger.log("PASS", (elementname+ " is clicked"));  //Similar to Info message
+			FrameworkLogger.log(LogType.INFO, (elementname+ " is clicked")); 
+		//	FrameworkLogger.log("PASS", (elementname+ " is clicked"));  
 		//	FrameworkLogger.log("CONSOLE", (elementname+ " is clicked"));
 		} catch (Exception e) {
 			e.printStackTrace();
