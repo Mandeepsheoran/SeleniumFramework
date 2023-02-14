@@ -19,7 +19,6 @@ import com.aventstack.extentreports.MediaEntityBuilder;
  * @see org.igt.utils.ReadPropertyFile
  */
 
-//We are not using this class now. Instead of this we are using FrameworkLogger class.
 public class ExtentLogger {
 	
 	/**
@@ -28,7 +27,6 @@ public class ExtentLogger {
 	 */
 	public static void pass(String message) {
 		ExtentManager.getExtentTest().pass(message);
-	//	System.out.println(message);  //Not good way of coding. Use FrameworkLogger
 	}
 	/**
 	 * To display test case fail log in report.
