@@ -23,7 +23,6 @@ public class FrameworkLogger {
 	
 	public static Map<LogType, Consumer<String>> map = new EnumMap<>(LogType.class);
 	
-	//Create static block as we don't want specific call to save memory. Static block will automatically load in object memory when some class will call it.
 	static {
 		map.put(LogType.PASS, Pass);
 		map.put(LogType.FAIL, Fail);
