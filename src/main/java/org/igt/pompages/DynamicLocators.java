@@ -24,11 +24,11 @@ public class DynamicLocators {
 	private final By reasoncode = By.xpath("//*[@id='ReasonCode']/ul[2]/div/div/div/form/input");
 	*/
 	
-	//In normal cases we use above xpath declaration but for cases where everything is same in xpath except one variable word we can use wildcard there i.e. %value%.
+	
 	private String menuitems = ("//*[@id='%value%']/ul[2]/div/div/div/form/input");
 	
 	public void clickmenu(String value) {
-		DriverManager.getDriver().findElement(By.xpath(menuitems.replace("%value%" , value)));  //Here we are telling system to replace %value% with values passed in signature by method which is calling this
+		DriverManager.getDriver().findElement(By.xpath(menuitems.replace("%value%" , value)));   by method which is calling this
 	}
 	
 }
