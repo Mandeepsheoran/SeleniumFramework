@@ -14,12 +14,12 @@ import com.aventstack.extentreports.ExtentTest;
  */
 public class ExtentManager {
 
-	private static ThreadLocal<ExtentTest> extTest = new ThreadLocal<>();  //We hv make this private as it is not getting used from outside
+	private static ThreadLocal<ExtentTest> extTest = new ThreadLocal<>();  
 
-	public static ExtentTest getExtentTest() {  //Changing this to public so that we can call it in test cases for adding author and other things
+	public static ExtentTest getExtentTest() {  
 		return extTest.get();
 	}	
-	static void setExtentTest(ExtentTest test) { //This method is void because we are not getting anything
+	static void setExtentTest(ExtentTest test) { 
 		if(Objects.nonNull(test)) {
 			extTest.set(test);
 		}
