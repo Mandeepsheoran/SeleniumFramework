@@ -74,9 +74,9 @@ public class ListenersClass implements ITestListener, ISuiteListener {
 	 */
 	@Override
 	public void onTestFailure(ITestResult result) {		
-			ExtentLogger.fail(result.getMethod().getMethodName()+" is failed",true); //Now this will generate screenshot as boolean value is getting passed as "true"
-			ExtentLogger.fail(result.getThrowable().toString());   //This will print the throwable line from exception in extent report logs
-			ExtentLogger.fail(Arrays.toString(result.getThrowable().getStackTrace()));   // This will print complete stack trace. Only String can be printed in extent report hence we have to change result to string. 
+			ExtentLogger.fail(result.getMethod().getMethodName()+" is failed",true); 
+			ExtentLogger.fail(result.getThrowable().toString());   
+			ExtentLogger.fail(Arrays.toString(result.getThrowable().getStackTrace()));  
 			SendResultstoELK.results(result.getMethod().getDescription(), "Fail");
 	}
 
