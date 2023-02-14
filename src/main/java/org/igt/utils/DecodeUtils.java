@@ -28,10 +28,7 @@ public class DecodeUtils {
 		return new String(Base64.getDecoder().decode(encodedString.getBytes()));
 	}
 	
-	//If we are using password like "Hallo@123" for eVisa login then we an encode it using encoder method of Base64 class.
-	//Then put that encoded password in excel sheet from where we are passing test data. Then we will get that test data from excel
-	//sheet in test script like below commented method and then decode that password using above method which is also called in below
-	//method.
+	
 	
 /*	Below code is not for this class. This is just to show how to use above method in test scripts. 
  * Below is example of test method in scripts where we are calling above method. 
